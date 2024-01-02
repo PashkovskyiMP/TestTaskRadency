@@ -1,0 +1,102 @@
+Test Case ID: TC_01
+Test Title: Check the ability to open a basic PR.
+Pre-conditions: User has a GitHub account and is a collaborator on a repository.
+Test Steps:
+	1. Fork a repository.
+	2. Make changes in the forked repository.
+	3. Push changes to the forked repository.
+	4. Click on 'New PR'.
+	5. Select the base repository and compare changes.
+	6. Provide a title and description.
+	7. Click 'Create PR'.
+ER: A new PR is created in the base repository.
+
+Test Case ID: TC_02
+Test Title: Check the ability to open a PR from a specific branch.
+Pre-conditions: User has a GitHub account, is a collaborator on a repository, and the repository has multiple branches.
+Test Steps:
+	1. Switch to a non-main branch.
+	2. Make and commit changes.
+	3. Push the changes to the branch.
+	4. Go to 'PR' tab and click 'New PR'.
+	5. Select the specific branch as the source.
+	6. Compare changes and provide a title and description.
+	7. Click 'Create PR'.
+ER: A pull request from the specific branch is created.
+
+Test Case ID: TC_03
+Test Title: Check that a PR can be closed properly.
+Pre-conditions: A PR is open in the repository.
+Test Steps:
+	1. Navigate to the open PR.
+	2. Click on 'Close PR'.
+	3. Confirm the closure.
+ER: The PR is closed and marked as such.
+
+Test Case ID: TC_04
+Test Title: Checks the ability to reopen a closed PR.
+Preconditions: There is a recently closed PR.
+Test Steps:
+	1. Go to the closed PR.
+	2. Click on 'Reopen PR'.
+ER: The PR is reopened.
+
+Test Case ID: TC_05
+Test Title: Check the process of reviewing a PR.
+Pre-conditions: A PR is open and the user is a collaborator.
+Test Steps:
+	1. Navigate to the open PR.
+	2. Click on 'Files changed'.
+	3. Review the changes and add comments if necessary.
+	4. Click on 'Review changes'.
+	5.  Select 'Approve', 'Request changes', or 'Comment'.
+	6. Submit the review.
+ER: The review is submitted and visible on the PR.
+Test Case ID: TC_06
+Test Title: Checks the ability to merge a PR.
+Pre-conditions: A PR is open, reviewed, and approved.
+Test Steps:
+	1. Navigate to the PR.
+	2. Click on 'Merge PR'.
+	3. Confirm the merge.
+ER: The PR is merged into the base branch.
+
+Test Case ID: TC_07
+Test Title: Check the process of handling a PR with merge conflicts.
+Pre-conditions: A PR is open with merge conflicts.
+Test Steps:
+	1. Go to the PR with conflicts.
+	2. Click on 'Resolve conflicts'.
+	3. Manually resolve conflicts in the web editor.
+	4. Mark as resolved.
+	5. Commit the changes.
+ER: Conflicts are resolved and the PR is updated
+
+Test Case ID: TC_08
+Test Title: Checks the process of linking a PR to an issue.
+Preconditions: A PR is open, and an issue exists in the repository.
+Test Steps:
+	1. Navigate to the PR
+	2. In the PR description, mention the issue using its number (#100).
+	3. Submit the PR
+ER: The PR is linked to the mentioned issue.
+
+Test Case ID: TC_09
+Test Title: Check the functionality of creating a draft PR.
+Pre-conditions: User has a GitHub account and is a collaborator on a repository.
+Test Steps:
+	1. Click on 'New PR'.
+	2. Select the branch with changes.
+	3. Provide a title and description.
+	4. Click on the dropdown next to 'Create PR' and select 'Create draft PR'.
+ER: A draft PR is created.
+
+Test Case ID: TC_10
+Test Title: Check the process of assigning reviewers to a PR.
+Pre-conditions: A PR is open, and there are collaborators in the repository.
+Test Steps:
+	1. Navigate to the PR.
+	2. Click on 'Reviewers'.
+	3. Add one or more reviewers.
+	4. Submit the PR.
+ER: Reviewers are assigned, and they receive notifications.

@@ -1,0 +1,14 @@
+SELECT
+	c.firstname ||  ' '  || c.lastname AS NAME,
+	p.name AS PRODUCT,
+	p.price AS PRICE
+FROM
+	CUSTOMER c
+JOIN
+	PURCHASE_ORDER po ON c.customer_id = po.customer_id
+JOIN
+	ORDER_PRODUCT op ON po.order_id = op.order_id
+JOIN
+	PRODUCT p ON op.product_id = p.product_id
+WHERE
+	p.price < 20.5;

@@ -1,0 +1,123 @@
+{
+  "info": {
+    "_postman_id": "8b3c9f8c-7de9-40c2-9cde-f240dd59301e",
+    "name": "GitHub GraphQL Queries",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_exporter_id": "13523643"
+  },
+  "item": [
+    {
+      "name": "20 most starred packages from Github",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response in JSON format\", function () {",
+              "    pm.response.to.be.json;",
+              "});",
+              "",
+              "pm.test(\"20 Repositories returned\", function () {",
+              "    const responseData = pm.response.json();",
+              "    pm.expect(responseData.data.search.edges.length).to.eql(20);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{token}}"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "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",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query {\n  search(query: \"stars:>1\", type: REPOSITORY, first: 20) {\n    edges {\n      node {\n        ... on Repository {\n          name\n          stargazers {\n            totalCount\n          }\n        }\n      }\n    }\n  }\n}\n",
+            "variables": ""
+          }
+        },
+        "url": "https://api.github.com/graphql"
+      },
+      "response": []
+    },
+    {
+      "name": "Get 10 oldest opened issues from https://github.com/nodejs/node with basic details",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response in JSON format\", function () {",
+              "    pm.response.to.be.json;",
+              "});",
+              "",
+              "pm.test(\"10 Issues returned\", function () {",
+              "    const responseData = pm.response.json();",
+              "    pm.expect(responseData.data.repository.issues.edges.length).to.eql(10);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": {
+            "token": "{{token}}"
+          }
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query {\n  repository(owner:\"nodejs\", name:\"node\") {\n    issues(states:OPEN, first:10, orderBy: {field: CREATED_AT, direction: ASC}) {\n      edges {\n        node {\n          title\n          number\n          createdAt\n        }\n      }\n    }\n  }\n}\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://api.github.com/graphql?",
+          "protocol": "https",
+          "host": [
+            "api",
+            "github",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
